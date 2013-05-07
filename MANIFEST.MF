@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Plugin-Name: Spam Me Not
+Plugin-Version: 1
+Author: cfalzone

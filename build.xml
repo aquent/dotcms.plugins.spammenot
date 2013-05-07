@@ -1,0 +1,3 @@
+<project name="Spam Me Not Plugin" default="build">	
+	<import file="../common.xml"/>	
+</project>

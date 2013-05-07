@@ -1,0 +1,5 @@
+<tool>
+	<key>spammenot</key>
+	<scope>application</scope>
+	<class>com.aquent.viewtools.SpamMeNot</class>
+</tool>
