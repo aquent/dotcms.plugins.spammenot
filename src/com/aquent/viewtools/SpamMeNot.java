@@ -33,8 +33,8 @@ public class SpamMeNot implements ViewTool {
 		if( name == null) name = "";
 		String originalString = "mailto:" + emailAddress;
 
-		String encodedName = encodeString(originalString);
-		String encodedMailto = encodeString(name);
+		String encodedMailto = encodeString(originalString);
+		String encodedName = encodeString(name);
 
 		//if no name is supplied, use email in statusbar
 		if( name.length() == 0 ) 

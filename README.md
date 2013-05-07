@@ -10,10 +10,12 @@ Usage Example
 -------------
 
 ```velocity
-<p>
-Email Me: 
+<p>Email Me: 
 ${spammenot.encodeEmail("example@email.com", "Example Name")}
 </p>
-```
 
+#set($href = $spammenot.encodeString("mailto:example@email.com"))
+#set($name = $spammenot.encodeString("Example Name"))
+<p>Email Me: <a class="mylink" href="${href}">${name}</a></p>
+```
 
