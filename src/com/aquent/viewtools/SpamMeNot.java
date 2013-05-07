@@ -30,56 +30,17 @@ public class SpamMeNot implements ViewTool {
 	 * @return                a complete email link
 	 */
 	public String encodeEmail(String emailAddress, String name) {
-		long seed = System.currentTimeMillis();
-		Random random = new Random(seed);
-		
 		if( name == null) name = "";
-		
 		String originalString = "mailto:" + emailAddress;
 
-		StringBuffer encodedName = new StringBuffer();
-		StringBuffer encodedMailto = new StringBuffer();
+		String encodedName = encodeString(originalString);
+		String encodedMailto = encodeString(name);
 
-		int originalLenght = originalString.length();
-		int nameLength = name.length();
-
-		int i;
-		for (i = 0; i < originalLenght; i++) {
-			switch (random.nextInt(3)) {
-				case 0 : //Decimal code
-					encodedMailto.append("&#" + (int)originalString.charAt(i) + ";");
-					break;
-				case 1 : //Hexadecial code
-					encodedMailto.append("&#x" + Integer.toHexString(originalString.charAt(i)) + ";");
-					break;
-				case 2 : //No action code
-					encodedMailto.append(originalString.charAt(i));
-					break;
-			}
-		}
-
-		for (i = 0; i < nameLength; i++) {
-			switch (random.nextInt(3)) {
-				case 0 : //Decimal code
-					encodedName.append("&#" + (int)name.charAt(i) + ";");
-					break;
-				case 1 : //Hexadecial code
-					encodedName.append("&#x" + Integer.toHexString(name.charAt(i)) + ";");
-					break;
-				case 2 : //No action code
-					encodedName.append(name.charAt(i));
-					break;
-			}
-		}
-		
 		//if no name is supplied, use email in statusbar
-		if( nameLength == 0 ) {
-			return "<a href=\"" + encodedMailto.toString() + "\">" +
-					encodedMailto.toString() + "</a>";
-		} else {
-			return "<a href=\"" + encodedMailto.toString() + "\">" +
-					encodedName.toString() + "</a>";
-		}
+		if( name.length() == 0 ) 
+			return "<a href=\"" + encodedMailto + "\">" + encodedMailto + "</a>";
+		else 
+			return "<a href=\"" + encodedMailto + "\">" + encodedName + "</a>";
 	}
 	
 	/**
