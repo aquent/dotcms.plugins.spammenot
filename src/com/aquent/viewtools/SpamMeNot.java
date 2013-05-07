@@ -29,12 +29,11 @@ public class SpamMeNot implements ViewTool {
 	 * @param name            the name to be displayed in statusbar
 	 * @return                a complete email link
 	 */
-	public static String encodeEmail(String emailAddress, String name) {
+	public String encodeEmail(String emailAddress, String name) {
 		long seed = System.currentTimeMillis();
 		Random random = new Random(seed);
 		
-		if( name == null)
-			name = "";
+		if( name == null) name = "";
 		
 		String originalString = "mailto:" + emailAddress;
 
@@ -81,6 +80,39 @@ public class SpamMeNot implements ViewTool {
 			return "<a href=\"" + encodedMailto.toString() + "\">" +
 					encodedName.toString() + "</a>";
 		}
+	}
+	
+	/**
+	 * Encode a string 
+	 * 
+	 * @param s		The String to Encode
+	 * @return		The encoded String
+	 */
+	public String encodeString(String s) {
+		long seed = System.currentTimeMillis();
+		Random random = new Random(seed);
+		
+		if(s == null) s = "";
+		
+		StringBuffer encodedString = new StringBuffer();
+		int originalLenght = s.length();
+		
+		int i;
+		for (i = 0; i < originalLenght; i++) {
+			switch (random.nextInt(3)) {
+				case 0 : //Decimal code
+					encodedString.append("&#" + (int)s.charAt(i) + ";");
+					break;
+				case 1 : //Hexadecial code
+					encodedString.append("&#x" + Integer.toHexString(s.charAt(i)) + ";");
+					break;
+				case 2 : //No action code
+					encodedString.append(s.charAt(i));
+					break;
+			}
+		}
+		
+		return encodedString.toString();
 	}
 
 }
