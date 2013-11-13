@@ -7,7 +7,7 @@ public class SpamMeNotInfo extends ServletToolInfo {
 
     @Override
     public String getKey () {
-        return "twitter";
+        return "spammenot";
     }
 
     @Override
