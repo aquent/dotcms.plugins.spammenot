@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Author: Aquent, LLC (cfalzone@aquent.com)
+Bundle-Name: SpamMeNot OSGI Viewtool
+Bundle-Activator: com.aquent.viewtools.SpamMeNotActivator
+Bundle-SymbolicName: SpamMeNot OSGI Viewtool
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: OSGi/Minimum-1.0
+Bundle-ClassPath: .
+DynamicImport-Package: *
+Import-Package:  com.dotmarketing.osgi,
+ com.dotmarketing.util,
+ org.apache.velocity.tools.view.servlet,
+ org.apache.velocity.tools.view.tools,
+ org.osgi.framework
