@@ -20,8 +20,8 @@ dependencies {
 
 jar {
     manifest {
-        name = 'Aquent SpamMeNot Plugin'
-	symbolicName = 'com.aquent.plugins.spammenot'
+        name = 'Aquent SpamMeNot'
+		symbolicName = 'com.aquent.plugins.spammenot'
         instruction 'Bundle-Vendor', 'Aquent, LLC (cfalzone@aquent.com)'
         instruction 'Bundle-Description', 'Aquent SpamMeNot Plugin'
         instruction 'Bundle-DocURL', 'http://www.aquent.com'
