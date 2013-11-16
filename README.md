@@ -9,8 +9,16 @@ http://paula.edmiston.org/nb/spamx/SpamMeNot.java
 Installation
 ------------
 * Navigate to the dotCMS Dynamic plugins page: "System" > "Dynamic Plugins"
-* Click on "Upload plugin" and select the .jar file located in the "build/jar/" folder
-* Click on "Exported Packages" and add the contents of the EXPORTS file to the bottom of the list
+* Click on "Upload plugin" and select the .jar file located in the "build/libs/" folder
+* Click on "Exported Packages" and add the following to the bottom:
+
+```
+,com.dotmarketing.osgi,
+com.dotmarketing.util,
+org.apache.velocity.tools.view.servlet,
+org.apache.velocity.tools.view.tools,
+org.osgi.framework
+```
 
 Usage Example
 -------------

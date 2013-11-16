@@ -1,5 +1,0 @@
-,com.dotmarketing.osgi,
-com.dotmarketing.util,
-org.apache.velocity.tools.view.servlet,
-org.apache.velocity.tools.view.tools,
-org.osgi.framework
