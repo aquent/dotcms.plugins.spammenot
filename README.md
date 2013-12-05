@@ -32,3 +32,7 @@ ${spammenot.encodeEmail("example@email.com", "Example Name")}
 <p>Email Me: <a class="mylink" href="${href}">${name}</a></p>
 ```
 
+Building
+--------
+* Install Gradle (if not already installed)
+* gradle jar 

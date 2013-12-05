@@ -3,7 +3,7 @@ apply plugin: 'osgi'
 apply plugin: 'eclipse'
 
 sourceCompatibility = '1.6'
-version = '0.1'
+version = '1.0'
 
 repositories {
 	maven {
@@ -26,20 +26,7 @@ jar {
         instruction 'Bundle-Description', 'Aquent SpamMeNot Plugin'
         instruction 'Bundle-DocURL', 'http://www.aquent.com'
         instruction 'Bundle-Activator', 'com.aquent.viewtools.SpamMeNotActivator'
+        instruction 'Import-Package', '!org.springframework.*', '*;version=0'
     }
 }
 
-task removeVersionsOnManifest (dependsOn: ['jar']) << {
-	def manifest1=new java.util.jar.Manifest(new FileInputStream('build/tmp/jar/MANIFEST.MF'))
-	def imports = manifest1.getMainAttributes().find { it.key.toString()=="Import-Package" }
-	imports.value=imports.value.toString().replaceAll(~/;version="[\(\[][0-9\.]+,[0-9\.]+[\)\]]"/,'')
-	manifest1.write(new FileOutputStream("build/tmp/jar/MANIFEST_NOVERSIONS.MF"))
-}
-
-task osgijar(type: Jar, dependsOn: ['removeVersionsOnManifest'] ) { 
-    appendix = "generatedjar" 
-    from zipTree(jar.archivePath) // add original content 
-    manifest {
-    	from('build/tmp/jar/MANIFEST_NOVERSIONS.MF')
-    } 
-} 
