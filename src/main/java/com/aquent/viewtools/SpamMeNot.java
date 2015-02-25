@@ -11,7 +11,7 @@ import java.lang.StringBuffer;
  * 
  * @author cfalzone
  * 
- * A Viewtool Implementation of the Spam-me-not Java version by Bjšrn Bergenheim
+ * A Viewtool Implementation of the Spam-me-not Java version by Bjorn Bergenheim
  * Original Version can be found at:  http://paula.edmiston.org/nb/spamx/SpamMeNot.java
  *
  */
