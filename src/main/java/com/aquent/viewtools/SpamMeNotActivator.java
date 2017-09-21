@@ -1,6 +1,6 @@
 package com.aquent.viewtools;
 
-import com.dotcms.repackage.org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleContext;
 import com.dotmarketing.osgi.GenericBundleActivator;
 
 public class SpamMeNotActivator extends GenericBundleActivator {
