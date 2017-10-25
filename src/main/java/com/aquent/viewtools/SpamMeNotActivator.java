@@ -1,23 +1,39 @@
 package com.aquent.viewtools;
 
-import com.dotcms.repackage.org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleContext;
+
+import com.dotcms.repackage.org.apache.logging.log4j.LogManager;
+import com.dotcms.repackage.org.apache.logging.log4j.core.LoggerContext;
+import com.dotmarketing.loggers.Log4jUtil;
 import com.dotmarketing.osgi.GenericBundleActivator;
 
+/**
+ * SpamMeNot Viewtool Activator.
+ * @author cfalzone
+ */
 public class SpamMeNotActivator extends GenericBundleActivator {
+    private LoggerContext pluginLoggerContext;
 
     @Override
-    public void start ( BundleContext bundleContext ) throws Exception {
+    public void start(BundleContext bundleContext) throws Exception {
+        // Setup Logger
+        LoggerContext dotcmsLoggerContext = Log4jUtil.getLoggerContext();
+        pluginLoggerContext = (LoggerContext) LogManager.getContext(this.getClass().getClassLoader(),
+            false, dotcmsLoggerContext, dotcmsLoggerContext.getConfigLocation());
 
         //Initializing services...
-        initializeServices( bundleContext );
+        initializeServices(bundleContext);
 
         //Registering the ViewTool service
-        registerViewToolService( bundleContext, new SpamMeNotInfo() );
+        registerViewToolService(bundleContext, new SpamMeNotInfo());
     }
 
     @Override
-    public void stop ( BundleContext bundleContext ) throws Exception {
+    public void stop(BundleContext bundleContext) throws Exception {
         unregisterViewToolServices();
+        unpublishBundleServices();
+        unregisterServices(bundleContext);
+        Log4jUtil.shutdown(pluginLoggerContext);
     }
 
 }
